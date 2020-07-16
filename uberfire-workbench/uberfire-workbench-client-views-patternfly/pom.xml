@@ -575,6 +575,7 @@
                     <include>dev/vs/basic-languages/swift/swift.contribution.js</include>
                     <include>dev/vs/basic-languages/tcl/tcl.contribution.js</include>
                     <include>dev/vs/basic-languages/twig/twig.contribution.js</include>
+                    <include>dev/vs/basic-languages/typescript/typescript.js </include>
                     <include>dev/vs/basic-languages/typescript/typescript.contribution.js</include>
                     <include>dev/vs/basic-languages/vb/vb.contribution.js</include>
                     <include>dev/vs/basic-languages/xml/xml.contribution.js</include>
@@ -582,7 +583,13 @@
                     <include>dev/vs/editor/editor.main.css</include>
                     <include>dev/vs/editor/editor.main.js</include>
                     <include>dev/vs/editor/editor.main.nls.js</include>
+                    <include>dev/vs/language/typescript/lib/lib.js</include>
+                    <include>dev/vs/language/typescript/lib/typescriptServices.js</include>
                     <include>dev/vs/language/typescript/lib/typescriptServicesMetadata.js</include>
+                    <include>dev/vs/language/typescript/languageFeatures.js</include>
+                    <include>dev/vs/language/typescript/tsMode.js</include>
+                    <include>dev/vs/language/typescript/tsWorker.js</include>
+                    <include>dev/vs/language/typescript/workerManager.js</include>
                     <include>dev/vs/loader.js</include>
                   </includes>
                 </resource>
