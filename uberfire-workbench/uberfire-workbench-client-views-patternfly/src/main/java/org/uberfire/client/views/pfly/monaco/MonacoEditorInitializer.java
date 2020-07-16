@@ -33,6 +33,8 @@ import static com.google.gwt.core.client.JavaScriptObject.createArray;
 public class MonacoEditorInitializer {
 
     static final String VS_EDITOR_EDITOR_MAIN_MODULE = "vs/editor/editor.main";
+    static final String JAVA_MODULE = "vs/basic-languages/java/java";
+    static final String JAVASCRIPT_MODULE = "vs/basic-languages/javascript/javascript";
 
     public void require(final Consumer<Monaco> monacoConsumer) {
 
@@ -49,17 +51,21 @@ public class MonacoEditorInitializer {
         MonacoLoader.require(modules, callback);
     }
 
-    void switchAMDLoaderFromDefaultToMonaco() {
+    public void switchAMDLoaderFromDefaultToMonaco() {
         nativeSwitchAMDLoaderFromDefaultToMonaco();
     }
 
-    void switchAMDLoaderFromMonacoToDefault() {
+    public void switchAMDLoaderFromMonacoToDefault() {
         nativeSwitchAMDLoaderFromMonacoToDefault();
     }
 
     JsArrayString monacoModule() {
         final JsArrayString modules = makeJsArrayString();
+
         modules.push(VS_EDITOR_EDITOR_MAIN_MODULE);
+        modules.push(JAVA_MODULE);
+        //modules.push(JAVASCRIPT_MODULE);
+
         return modules;
     }
 
@@ -68,17 +74,27 @@ public class MonacoEditorInitializer {
     }
 
     private native void nativeSwitchAMDLoaderFromDefaultToMonaco() /*-{
+        console.log("ENTER MONACO LOADER");
+
+        if ($wnd == null) {
+            $wnd = window;
+        }
 
         // Store current definition of 'define' and 'require'
         $wnd.__GLOBAL_DEFINE__ = $wnd.define;
         $wnd.__GLOBAL_REQUIRE__ = $wnd.require;
-
         // Set Monaco AMD Loader definition of 'define' and 'require'
         $wnd.define = $wnd.__MONACO_AMD_LOADER__.define;
         $wnd.require = $wnd.__MONACO_AMD_LOADER__.require;
     }-*/;
 
     private native void nativeSwitchAMDLoaderFromMonacoToDefault() /*-{
+        console.log("EXIT MONACO LOADER");
+
+        if ($wnd == null) {
+            $wnd = window;
+        }
+
         // Reset the definition of 'define' and 'require'
         $wnd.define = $wnd.__GLOBAL_DEFINE__;
         $wnd.require = $wnd.__GLOBAL_REQUIRE__;

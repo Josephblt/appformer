@@ -178,6 +178,7 @@ public class ShowcaseEntryPoint {
     public void startApp() {
         PatternFlyBootstrapper.ensureMomentIsAvailable();
         PatternFlyBootstrapper.ensureBootstrapDateRangePickerIsAvailable();
+        PatternFlyBootstrapper.ensureMonacoEditorLoaderIsAvailable();
         perspectiveEditorSettings.setTagsEnabled(true);
         hideLoadingPopup();
         GWT.log("PatternFly version: " + pflyEntryPoint.getPatternFlyVersion());
